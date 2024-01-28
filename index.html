@@ -9,10 +9,56 @@
     <link rel="stylesheet" href="./styles.css">
 </head>
 <body class="flex flex-col">
-    <header class="mx-auto full-width">
+    <dialog id="new-book-modal">
+        <div class="modal__header flex justify-between">
+            <h2 class="modal__title">
+                Add a new book
+            </h2>
+            <button class="modal__close">
+                &times;
+            </button>
+        </div>
+        <form class="new-book-form flex flex-col">
+            <div class="form__group align-center flex justify-between">
+                <label for="title" class="form__label">
+                    Title
+                </label>
+                <input type="text" id="title" class="form__input" required>
+            </div>
+            <div class="form__group align-center flex justify-between">
+                <label for="author" class="form__label">
+                    Author
+                </label>
+                <input type="text" id="author" class="form__input" required>
+            </div>
+            <div class="form__group align-center flex justify-between">
+                <label for="pages" class="form__label">
+                    Pages
+                </label>
+                <input type="number" id="pages" class="form__input" required>
+            </div>
+            <div class="form__group align-center flex justify-between">
+                <label for="read" class="form__label">
+                    Read
+                </label>
+                <input type="checkbox" id="read" class="form__input">
+            </div>
+            <div class="form__group align-center flex justify-between">
+                <button type="submit" class="form__submit">
+                    Add book
+                </button>
+            </div>
+        </form>
+    </dialog>
+    <header class="mx-auto full-width flex justify-between">
         <a href="/" class="logo">
             My book list
         </a>
+        <div class="tooltip" title="Add a new book">
+            <button id="new-book">
+                +
+            </button>
+        </div>
     </header>
     <main class="mx-auto full-width">
         <section class="books-container flex justify-between">

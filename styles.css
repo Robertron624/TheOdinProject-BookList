@@ -2,203 +2,328 @@
 *,
 *::before,
 *::after {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 /* Prevent font size inflation */
 html {
-    -moz-text-size-adjust: none;
-    -webkit-text-size-adjust: none;
-    text-size-adjust: none;
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
 }
 
 /* Remove default margin in favour of better control in authored CSS */
-body, h1, h2, h3, h4, p,
-figure, blockquote, dl, dd {
-    margin-block-end: 0;
-    margin-block-start: 0;
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin-block-end: 0;
+  margin-block-start: 0;
 }
 
 /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
-ul[role='list'],
-ol[role='list'] {
-    list-style: none;
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
 }
 
 /* Set core body defaults */
 body {
-    min-height: 100vh;
-    line-height: 1.5;
+  min-height: 100vh;
+  line-height: 1.5;
 }
 
 /* Set shorter line heights on headings and interactive elements */
-h1, h2, h3, h4,
-button, input, label {
-    line-height: 1.1;
+h1,
+h2,
+h3,
+h4,
+button,
+input,
+label {
+  line-height: 1.1;
 }
 
 /* Balance text wrapping on headings */
-h1, h2,
-h3, h4 {
-    text-wrap: balance;
+h1,
+h2,
+h3,
+h4 {
+  text-wrap: balance;
 }
 
 /* A elements that don't have a class get default styles */
 a:not([class]) {
-    text-decoration-skip-ink: auto;
-    color: currentColor;
+  text-decoration-skip-ink: auto;
+  color: currentColor;
 }
 
 /* Make images easier to work with */
 img,
 picture {
-    max-width: 100%;
-    display: block;
+  max-width: 100%;
+  display: block;
 }
 
 /* Inherit fonts for inputs and buttons */
-input, button,
-textarea, select {
-    font: inherit;
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  background-color: transparent;
+  background-image: none;
+  padding: 0;
+  cursor: pointer;
 }
 
 /* Make sure textareas without a rows attribute are not tiny */
 textarea:not([rows]) {
-    min-height: 10em;
+  min-height: 10em;
 }
 
 /* Anything that has been anchored to should have extra scroll margin */
 :target {
-    scroll-margin-block: 5ex;
+  scroll-margin-block: 5ex;
 }
 
 a {
-    text-decoration: none;
-    color: #dae2e8;
+  text-decoration: none;
+  color: #dae2e8;
 }
 
 .btn {
-    padding: .5rem 1rem;
-    border-radius: .5rem;
-    cursor: pointer;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
 }
 
-
 .mx-auto {
-    margin-inline: auto;
+  margin-inline: auto;
 }
 
 .flex {
-    display: flex;
+  display: flex;
 }
 
 .flex-centered {
-    justify-content: center;
+  justify-content: center;
 }
 
 .justify-between {
-    justify-content: space-between;
+  justify-content: space-between;
+}
+
+.align-center {
+  align-items: center;
 }
 
 .flex-col {
-    flex-direction: column;
+  flex-direction: column;
 }
 
 .flex-row {
-    flex-direction: row;
+  flex-direction: row;
 }
 
 .full-width {
-    width: 100%;
+  width: 100%;
 }
 
 body {
-    background-color: #211717;
-    color: #dae2e8;
-    margin: 0;
-    padding: 0;
-    font-family: sans-serif, Arial, Helvetica;
+  background-color: #211717;
+  color: #dae2e8;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif, Arial, Helvetica;
 
-
-    --max-width: 1280px;
-    --color-primary: #f5f5f5;
+  --max-width: 1280px;
+  --color-primary: #f5f5f5;
 }
 
 header {
-    padding: 2rem 1rem;
-    max-width: var(--max-width);
-    background-color: #955151;
+  padding: 2rem 1rem;
+  max-width: var(--max-width);
+  background-color: #955151;
 }
 
 header .logo {
-    color: var(--color-primary);
+  color: var(--color-primary);
 }
 
 header .logo:hover {
-    color: #f5f5f5;
+  color: #f5f5f5;
 }
 
 header .logo:visited {
-    color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+header .tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+header .tooltip:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+header .tooltip button {
+  background-color: #459598;
+  color: #f5f5f5;
+  transition: all 0.3s ease-in-out;
+  padding: 0.5rem 1rem;
+  border: 1px solid #459598;
+  border-radius: 50%;
 }
 
 main {
-    max-width: var(--max-width);
+  max-width: var(--max-width);
+  padding: 0 1rem;
 }
 
-
 main .books-container {
-    flex-wrap: wrap;
-    gap: 1rem;
-    margin-top: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
 }
 
 .books-container .book {
-    background-color: #f8f7f7;
-    color: #211717;
-    padding: 1rem 2rem;
-    border-radius: 1rem;
+  background-color: #f8f7f7;
+  color: #211717;
+  padding: 1rem 2rem;
+  border-radius: 1rem;
 }
 
 .book .book__title {
-    font-size: 1.2rem;
-    font-weight: bold;
+  font-size: 1.2rem;
+  font-weight: bold;
 }
 
 .book .book__author {
-    font-size: 1rem;
-    font-style: italic;
-    margin: .5rem 0 1rem;
+  font-size: 1rem;
+  font-style: italic;
+  margin: 0.5rem 0 1rem;
+}
+
+.book .book__pages {
+  font-size: 0.8rem;
+  margin-bottom: 1rem;
 }
 
 .book .book__read {
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 
-.book .book__read .input{
-    margin-right: .5rem;
+.book .book__read .input {
+  margin-right: 0.5rem;
 }
 
-.book .book__delete button{
-    background-color: #955151;
-    color: #f5f5f5;
-    border: 1px solid #955151;
-    transition: all .3s ease-in-out;
+.book .book__delete button {
+  background-color: #d23030;
+  color: #f5f5f5;
+  border: 1px solid #d23030;
+  transition: all 0.3s ease-in-out;
 }
 
-.book .book__delete button:hover{
-    background-color: #f5f5f5;
-    color: #955151;
+.book .book__delete button:hover {
+  background-color: #f5f5f5;
+  color: #d23030;
 }
 
+/* Modal for new book form */
 
+dialog#new-book-modal {
+  background-color: #f5f5f5;
+  border-radius: 1rem;
+  padding: 2rem 2rem;
+  max-width: 500px;
+  width: 45%;
+}
+
+dialog#new-book-modal::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+#new-book-modal .modal__header {
+  margin-bottom: 1rem;
+}
+
+#new-book-modal .modal__header button {
+  background-color: #955151;
+  color: #f5f5f5;
+  border: 1px solid #955151;
+  transition: all 0.3s ease-in-out;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+}
+
+#new-book-modal .modal__header button:hover {
+  background-color: #f5f5f5;
+  color: #955151;
+}
+
+#new-book-modal .new-book-form {
+  gap: 1rem;
+}
+
+.new-book-form .form__group {
+  gap: 0.4rem;
+}
+
+.new-book-form .form__group label {
+  display: block;
+}
+
+.new-book-form .form__group input[type="text"],
+.new-book-form .form__group input[type="number"] {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid #211717;
+}
+
+.new-book-form .form__group input[type="text"]:focus,
+.new-book-form .form__group input[type="number"]:focus {
+  outline: 2px solid #955151;
+}
+
+.new-book-form .form__group input[type="checkbox"] {
+  width: 1.5rem;
+  height: 1.5rem;
+  cursor: pointer;
+}
+
+.new-book-form .form__group button[type="submit"] {
+  background-color: #955151;
+  color: #f5f5f5;
+  border: 1px solid #955151;
+  transition: all 0.3s ease-in-out;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+}
+
+.new-book-form .form__group button[type="submit"]:hover {
+  background-color: #f5f5f5;
+  color: #955151;
+}
 
 footer {
-    max-width: var(--max-width);
-    padding:    0 1rem 2rem;
-    margin-top: auto;
+  max-width: var(--max-width);
+  padding: 1rem 1rem 2rem;
+  margin-top: auto;
 }
 
 footer .author {
-    text-align: center;
+  text-align: center;
 }

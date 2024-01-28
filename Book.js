@@ -1,35 +1,33 @@
-function Book(title, author, id, isRead=false) {
+function Book(id, title, author, pages, isRead=false) {
+    this.id = id;
     this.title = title;
     this.author = author;
-    this.id = id;
+    this.pages = pages;
     this.isRead = isRead;
 
-    // Toggle the isRead property of the book
     this.toggleRead = function() {
         this.isRead = !this.isRead;
     };
 
-    // Return the book's title
     this.getTitle = function() {
         return this.title;
     };
 
-    // Return the book's author
     this.getAuthor = function() {
         return this.author;
     };
 
-    // Return the book's id
+    this.getPages = function() {
+        return this.pages;
+    };
+
     this.getId = function() {
         return this.id;
     };
 
-    // Return the book's isRead property
     this.getIsRead = function() {
         return this.isRead;
     };
-
-    // Set the book's title
 
     this.setTitle = function(title) {
         this.title = title;
@@ -50,6 +48,7 @@ function Book(title, author, id, isRead=false) {
         bookHTML.innerHTML = `
             <div class="book__title">${this.title}</div>
             <div class="book__author">${this.author}</div>
+            <div class="book__pages">${this.pages} pages</div>
             <div class="book__read">
                 <input type="checkbox" id="read-${this.id}" name="read" ${this.isRead ? 'checked' : ''}>
                 <label for="read-${this.id}">Read</label>

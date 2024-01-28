@@ -2,6 +2,17 @@ import { exampleBooks } from './bookExamples.js'
 import Book from './Book.js'
 
 const books = [];
+const booksContainer = document.querySelector('.books-container');
+const newBookButton = document.querySelector('button#new-book');
+const newBookModal = document.querySelector('#new-book-modal');
+const newBookForm = document.querySelector('.new-book-form');
+const modalCloseButton = document.querySelector('#new-book-modal button.modal__close');
+
+function getNewId () {
+    const ids = books.map(book => parseInt(book.getId()));
+    const maxId = Math.max(...ids);
+    return maxId + 1;
+}
 
 function deleteBook(event) {
     const bookId = event.target.id.split('-')[1];
@@ -20,18 +31,51 @@ function toggleBookRead(event) {
     if(!book) return;
 
     book.toggleRead();
-    console.log(books)
+}
+
+function addBookToDom(newBook) {
+    const bookHTML = newBook.generateBookHTML();
+
+    // Add event listener to the delete button
+    const deleteButton = bookHTML.querySelector('.btn--delete');
+    deleteButton.addEventListener('click', deleteBook);
+
+    // Add event listener to the read checkbox
+    const readCheckbox = bookHTML.querySelector('.book__read input[name="read"]');
+    readCheckbox.addEventListener('change', toggleBookRead);
+
+    booksContainer.appendChild(bookHTML);
+}
+
+function handleNewBookFormSubmit(event) {
+    event.preventDefault();
+
+    const title = event.target.elements.title.value;
+    const author = event.target.elements.author.value;
+    const pages = event.target.elements.pages.value;
+    const isRead = event.target.elements.read.checked;
+
+    const id = getNewId();
+
+    const newBook = new Book(id, title, author, pages, isRead);
+    books.push(newBook);
+
+    addBookToDom(newBook);
+
+    newBookModal.close();
+    event.target.reset();
 }
 
 function main() {
 
-    const booksContainer = document.querySelector('.books-container');
-
-    // Create a new Book object for each book in exampleBooks
-    // and add it to the books array
+    document.addEventListener('click', (event) => {
+        if(event.target === newBookModal) {
+            newBookModal.close();
+        }
+    });
 
     exampleBooks.forEach((book) => {
-        const newBook = new Book(book.title, book.author, book.id, book.isRead);
+        const newBook = new Book(book.id, book.title, book.author, book.pages, book.isRead);
         books.push(newBook);
 
         const bookHTML = newBook.generateBookHTML();
@@ -46,6 +90,16 @@ function main() {
 
         booksContainer.appendChild(bookHTML);
     });
+
+    newBookButton.addEventListener('click', () => {
+        newBookModal.showModal();
+    });
+
+    modalCloseButton.addEventListener('click', () => {
+        newBookModal.close();
+    });
+
+    newBookForm.addEventListener('submit', handleNewBookFormSubmit);
 }
 
 window.onload = main
