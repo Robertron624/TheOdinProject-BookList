@@ -18,7 +18,7 @@ That's it, no frameworks or libraries.
 
 ## Live Demo
 
-[Live Demo Link](https://rawcdn.githack.com/brugobi/book-library/0b9b9b9b1b2b3b0b9b9b9b9b9b9b9b9b9b9b9b9/index.html)
+[Live Demo Link](https://robertron624.github.io/TheOdinProject-BookList/)
 
 ## Screenshot
 
